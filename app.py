@@ -243,7 +243,7 @@ def add_internship():
         company_id = session["user_id"]
         title = request.form.get("title", "")
         description = request.form.get("description", "")
-        selected_skill = request.form.get("skills_required", "")
+        selected_skill = request.form.get("skill_required", "")
         stipend = request.form.get("stipend", "")
         duration = request.form.get("duration", "")
 
@@ -257,7 +257,7 @@ def add_internship():
             skill_id = skill_row["skill_id"]
 
             # Insert into internships with skill name (for readability)
-            sql_intern = """INSERT INTO internships (company_id, title, description, skills_required, stipend, duration) 
+            sql_intern = """INSERT INTO internships (company_id, title, description, skill_required, stipend, duration) 
                             VALUES (%s, %s, %s, %s, %s, %s)"""
             values_intern = (company_id, title, description, selected_skill, stipend, duration)
             cursor.execute(sql_intern, values_intern)

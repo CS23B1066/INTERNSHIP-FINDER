@@ -56,8 +56,8 @@
         
         <input type="number" name="stipend" placeholder="stipend" required>
         <input type="text" name="duration" placeholder="duration" required>
-        <label for="skills_required">Required Skill:</label>
-        <select name="skills_required" required>
+        <label for="skill_required">Required Skill:</label>
+        <select name="skill_required" required>
             {% for skill in all_skills %}
                 <option value="{{ skill }}">{{ skill }}</option>
             {% endfor %}
