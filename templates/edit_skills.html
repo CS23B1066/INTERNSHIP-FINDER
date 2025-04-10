@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Skills</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .left-half {
+            width: 50%;
+            background: url('static/images/edit_skills.jpg') no-repeat center center/cover;
+        }
+
+        .right-half {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 20px;
+            box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            text-align: left;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .back-link {
+            color: #007BFF;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-half"></div>
+        <div class="right-half">
+            <h2>Edit Skills</h2>
+            <form method="POST">
+                {% for skill in all_skills %}
+                    <label>
+                        <input type="checkbox" name="skills" value="{{ skill }}" {% if skill in user_skills %}checked{% endif %}>
+                        {{ skill }}
+                    </label><br>
+                {% endfor %}
+                <br>
+                <input type="submit" value="Save Skills" class="btn">
+            </form>
+            <br>
+            <a href="/profile" class="back-link">Back to Profile</a>
+        </div>
+    </div>
+</body>
+</html>

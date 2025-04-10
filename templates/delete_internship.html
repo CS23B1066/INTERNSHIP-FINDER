@@ -1,0 +1,25 @@
+<h2>Delete an Internship</h2>
+
+<p style="color: green;">{{ message }}</p>
+
+<form method="POST">
+    <label for="internship_id">Enter Internship ID to delete:</label>
+    <input type="number" name="internship_id" required>
+    <button type="submit">Delete Internship</button>
+</form>
+
+<h3>Your Posted Internships:</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Internship ID</th>
+        <th>Title</th>
+        <th>Posted At</th>
+    </tr>
+    {% for internship in internships %}
+    <tr>
+        <td>{{ internship.internship_id }}</td>
+        <td>{{ internship.title }}</td>
+        <td>{{ internship.posted_at }}</td>
+    </tr>
+    {% endfor %}
+</table>

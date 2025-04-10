@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Internship Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        table, th, td {
+            border: 1px solid #bbb;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .no-data {
+            font-style: italic;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Applications for Your Internships</h2>
+
+{% if applications and applications|length > 0 %}
+    <table>
+        <thead>
+            <tr>
+                <th>Internship ID</th>
+                <th>Internship Title</th>
+                <th>Student Name</th>
+                <th>Student Email</th>
+                <th>Applied On</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in applications %}
+            <tr>
+                <td>{{ app.internship_id }}</td>
+                <td>{{ app.internship_title }}</td>
+                <td>{{ app.student_name }}</td>
+                <td>{{ app.student_email }}</td>
+                <td>{{ app.posted_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="no-data">No applications found for your internships.</p>
+{% endif %}
+
+</body>
+</html>

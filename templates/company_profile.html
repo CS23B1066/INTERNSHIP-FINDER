@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('static/images/project.jpg');
+            background-color: #f3e631;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgb(195, 195, 192);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .internship {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .internship:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Company Profile</h1>
+    <p><strong>Name:</strong> {{ company.name }}</p>
+    <p><strong>Email:</strong> {{ company.email }}</p>
+    <p><strong>Joined:</strong> {{ company.created_at }}</p>
+
+    <h2>Internships Posted</h2>
+    {% if internships %}
+        {% for internship in internships %}
+        <div class="internship">
+            <h2>{{ internship.title }}</h2>
+            <p><strong>Description:</strong> {{ internship.description }}</p>
+            <p><strong>Skills Required:</strong> {{ internship.skills_required }}</p>
+            <p><strong>Stipend:</strong> ₹{{ internship.stipend }}</p>
+            <p><strong>Duration:</strong> {{ internship.duration }} months</p>
+            <p><small>Posted on: {{ internship.posted_at }}</small></p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>OOPS! (NO INTERNSHIPS ADDED)</p>
+    {% endif %}
+    <a href="/add_internship"><button>ADD INTERNSHIP</button></a>
+    <br><br>
+    <a href="/delete_internship"><button>DELETE INTERNSHIP</button></a>
+    <br><br>
+    <a href="/company_applications"><button>SEE PEOPLE WHO APPLIED FOR INTERNSHIPS</button></a>
+
+</div>
+
+</body>
+</html>

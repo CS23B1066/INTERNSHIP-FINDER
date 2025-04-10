@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internship Dashboard</title>
+</head>
+<body>
+    <h2>Matching Internships</h2>
+    
+    {% if internships %}
+        <ul>
+            {% for internship in internships %}
+                <li><strong>{{ internship[1] }}</strong> ({{ internship[5] }} months) - ₹{{ internship[4] }}/month
+                    <br>Skills: {{ internship[3] }} | Degree: {{ internship[6] }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No internships match your profile yet. Try adding more skills.</p>
+    {% endif %}
+
+    <br>
+    <a href="/logout">Logout</a>
+</body>
+</html>

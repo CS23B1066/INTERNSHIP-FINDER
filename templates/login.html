@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .background {
+            width: 50%;
+            background: url('static/images/9760493.jpg') no-repeat center center/cover;
+        }
+        .login-container {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            flex-direction: column;
+            text-align: center;
+        }
+        .login-box {
+            max-width: 300px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            background-color: rgb(72, 65, 65);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(52, 52, 68);
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="login-container">
+        <h1>WELCOME TO INTERNSHIP FINDER</h1>
+        <p>Find the best internships that match your skills and education. Connect with top companies and kickstart your career today!</p>
+        
+        <div class="login-box">
+            <h2>Login</h2>
+            <form action="/" method="post">
+                <label>Email:</label>
+                <input type="email" name="email" required>
+
+                <label>Password:</label>
+                <input type="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="/signup">Sign up</a></p>
+            <p>Are you a company? company can also login in same</p>
+        </div>
+    </div>
+</body>
+</html>

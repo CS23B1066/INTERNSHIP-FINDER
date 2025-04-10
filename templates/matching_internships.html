@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matching Internships</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        table, th, td {
+            border: 1px solid #bbb;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1em;
+            width: 200px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 15px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Internships Matching Your Skills</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="message">
+      {% for category, message in messages %}
+        <p class="{{ 'success' if category == 'success' else 'error' }}">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+{% if internships %}
+    <table>
+        <tr>
+            <th>Internship ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Stipend</th>
+            <th>Duration (weeks)</th>
+            <th>Posted At</th>
+        </tr>
+        {% for internship in internships %}
+        <tr>
+            <td>{{ internship.internship_id }}</td>
+            <td>{{ internship.title }}</td>
+            <td>{{ internship.description }}</td>
+            <td>{{ internship.stipend }}</td>
+            <td>{{ internship.duration }}</td>
+            <td>{{ internship.posted_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form method="POST" action="/matching_internships">
+        <h3>Apply to Internship</h3>
+        <label for="internship_id">Enter Internship ID:</label>
+        <input type="number" name="internship_id" id="internship_id" required>
+        <input type="submit" value="Apply">
+    </form>
+
+{% else %}
+    <p>No internships found matching your skills.</p>
+{% endif %}
+
+</body>
+</html>

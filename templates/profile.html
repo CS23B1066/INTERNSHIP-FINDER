@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #918f8f;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: rgb(240, 238, 238);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background:#d9e434;
+            color: rgb(27, 26, 26);
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #218838;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Profile</h2>
+        {% if user %}
+            <p><strong>Name:</strong> {{ user[0] }}</p>
+            <p><strong>Email:</strong> {{ user[1] }}</p>
+        {% else %}
+            <p>No user details available.</p>
+        {% endif %}
+
+        <h3>Education</h3>
+        {% if education %}
+            <p><strong>Degree:</strong> {{ education[0] }}</p>
+            <p><strong>University:</strong> {{ education[1] }}</p>
+            <p><strong>Graduation Year:</strong> {{ education[2] }}</p>
+        {% else %}
+            <p>No education details available.</p>
+        {% endif %}
+        <a href="/edit_education"><button>Edit Education</button></a>
+
+        <h3>Skills</h3>
+        {% if skills %}
+            <ul>
+                {% for skill in skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No skills added yet.</p>
+        {% endif %}
+        <a href="/edit_skills"><button>Edit Skills</button></a>
+        <br><br>
+        <a href="/matching_internships"><button>APPLY FOR INTERNSHIPS THAT MATCHES YOUR SKILLS</button></a>
+
+        <br><br>
+        <a href="/logout"><button>logout</button></a>
+    </div>
+</body>
+</html>
